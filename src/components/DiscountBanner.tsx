@@ -43,19 +43,19 @@ export const DiscountBanner: React.FC<DiscountBannerProps> = ({
             <p className="text-xs sm:text-sm text-stone-600 mt-0.5">
               {discountApplied ? (
                 <span>
-                  Seleccionaste <strong className="text-stone-900">{selectedCount} servicios</strong>. Ahorro de{' '}
+                  Elegiste <strong className="text-stone-900">{selectedCount} servicios</strong>. Ahorrás{' '}
                   <strong className="text-emerald-700 font-bold tabular-nums">
                     ${savingsAmount.toLocaleString('es-AR')}
                   </strong>{' '}
                   en el total.
                 </span>
               ) : selectedCount === 0 ? (
-                'Marca los servicios que desees en las tablas de abajo. Con 3 o más servicios recibes el 10% de descuento.'
+                'Marcá los servicios que te gustaría incluir en las tablas de abajo. Con 3 o más servicios recibís 10% de descuento en el total.'
               ) : (
                 <span>
-                  Llevas <strong className="text-stone-900">{selectedCount} {selectedCount === 1 ? 'servicio' : 'servicios'}</strong>.{' '}
+                  Llevás <strong className="text-stone-900">{selectedCount} {selectedCount === 1 ? 'servicio' : 'servicios'}</strong>.{' '}
                   {needed > 0
-                    ? `Suma ${needed} más para activar el 10% de descuento.`
+                    ? `Sumá ${needed} más para activar el 10% de descuento.`
                     : ''}
                 </span>
               )}

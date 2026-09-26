@@ -95,12 +95,12 @@ export const CheckoutDrawer: React.FC<CheckoutDrawerProps> = ({
     e.preventDefault();
 
     if (selectedItems.length === 0) {
-      setValidationError('Por favor selecciona al menos un servicio para armar el paquete.');
+      setValidationError('Por favor seleccioná al menos un servicio para armar el paquete.');
       return;
     }
 
     if (!formData.buyerName.trim()) {
-      setValidationError('Por favor ingresa tu nombre (quien regala).');
+      setValidationError('Por favor ingresá tu nombre (quien regala).');
       return;
     }
 
@@ -175,7 +175,7 @@ export const CheckoutDrawer: React.FC<CheckoutDrawerProps> = ({
 
             {selectedItems.length === 0 ? (
               <p className="py-4 text-center text-xs text-stone-500">
-                Aún no has seleccionado ningún servicio. Marca opciones en la tabla.
+                Todavía no elegiste ningún servicio. Marcá las opciones que quieras en la tabla.
               </p>
             ) : (
               <ul className="divide-y divide-stone-100 mt-2 max-h-48 overflow-y-auto">
@@ -277,7 +277,7 @@ export const CheckoutDrawer: React.FC<CheckoutDrawerProps> = ({
                   rows={2}
                   value={formData.giftMessage}
                   onChange={(e) => onFormChange({ giftMessage: e.target.value })}
-                  placeholder="Mensaje de felicitación para mamá..."
+                  placeholder="Escribí un mensaje de dedicatoria para mamá..."
                   className="w-full px-3 py-2 text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:border-stone-400 focus:bg-white resize-none"
                 />
               </div>
@@ -290,7 +290,7 @@ export const CheckoutDrawer: React.FC<CheckoutDrawerProps> = ({
                   type="text"
                   value={formData.notes}
                   onChange={(e) => onFormChange({ notes: e.target.value })}
-                  placeholder="Ej. Talle M, o prefiere canje libre"
+                  placeholder="Ej. Talle M, o prefiere canje libre en el local"
                   className="w-full px-3 py-2 text-sm bg-stone-50 border border-stone-200 rounded-lg focus:outline-none focus:border-stone-400 focus:bg-white"
                 />
               </div>
@@ -334,7 +334,7 @@ export const CheckoutDrawer: React.FC<CheckoutDrawerProps> = ({
             className="w-full flex items-center justify-center gap-2 px-5 py-3 text-sm font-semibold text-white bg-emerald-700 rounded-lg hover:bg-emerald-800 disabled:opacity-40 disabled:pointer-events-none transition-colors shadow-xs"
           >
             <Send className="w-4 h-4" />
-            <span>Enviar Pedido a WhatsApp</span>
+            <span>Enviar pedido por WhatsApp</span>
           </button>
 
           <div className="flex items-center justify-between text-[11px] text-stone-500 pt-1">
@@ -346,12 +346,12 @@ export const CheckoutDrawer: React.FC<CheckoutDrawerProps> = ({
               {copied ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="text-emerald-700 font-semibold">¡Mensaje copiado!</span>
+                  <span className="text-emerald-700 font-semibold">¡Copiado!</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-3.5 h-3.5" />
-                  <span>Copiar texto</span>
+                  <span>Copiar mensaje</span>
                 </>
               )}
             </button>

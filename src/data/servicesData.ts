@@ -28,36 +28,36 @@ export const BUSINESSES_INFO: Record<string, BusinessInfo> = {
 };
 
 export const SERVICES_LIST: ServiceItem[] = [
-  // 1. Peluquería: JV Estilista (5 opciones)
+  // 1. Peluquería: JV Estilista (5 opciones actualizadas)
   {
     id: 'pel-1',
-    name: 'Corte de pelo & Brushing',
+    name: 'Corte de Pelo',
     category: 'peluqueria',
-    price: 18000,
+    price: 42000,
   },
   {
     id: 'pel-2',
-    name: 'Nutrición capilar profunda',
+    name: 'Tintura Color Completo',
     category: 'peluqueria',
-    price: 22000,
+    price: 74000,
   },
   {
     id: 'pel-3',
-    name: 'Alisado progresivo',
+    name: 'Nutrición',
     category: 'peluqueria',
-    price: 32000,
+    price: 43000,
   },
   {
     id: 'pel-4',
-    name: 'Peinado & Ondas',
+    name: 'Alisado',
     category: 'peluqueria',
-    price: 16000,
+    price: 87000,
   },
   {
     id: 'pel-5',
-    name: 'Baño de luz & Coloración',
+    name: 'Keratina / Bótox',
     category: 'peluqueria',
-    price: 26000,
+    price: 73000,
   },
 
   // 2. Manicuría: Yasmin Studio de Uñas (5 opciones)
@@ -92,34 +92,34 @@ export const SERVICES_LIST: ServiceItem[] = [
     price: 6000,
   },
 
-  // 3. Ropa: Jazmín (5 opciones)
+  // 3. Ropa: Jazmín (5 opciones actualizadas)
   {
     id: 'rop-1',
-    name: 'Conjunto de ropa interior de algodón',
+    name: 'Conjunto taza soft - Talles 85 al 100',
     category: 'ropa',
     price: 16000,
   },
   {
     id: 'rop-2',
-    name: 'Conjunto deportivo diario (calza + top)',
+    name: 'Camisolín',
     category: 'ropa',
-    price: 28000,
+    price: 21000,
   },
   {
     id: 'rop-3',
-    name: 'Pijama cómodo de modal para todos los días',
+    name: 'Pack de less Frashe',
     category: 'ropa',
-    price: 22000,
+    price: 10000,
   },
   {
     id: 'rop-4',
-    name: 'Pack x3 bombachas de algodón',
+    name: 'Conjunto triángulo soft',
     category: 'ropa',
-    price: 12000,
+    price: 19000,
   },
   {
     id: 'rop-5',
-    name: 'Voucher de compra libre en el local ($20.000)',
+    name: 'Calzas estampadas - Talles 1 al 6',
     category: 'ropa',
     price: 20000,
   },

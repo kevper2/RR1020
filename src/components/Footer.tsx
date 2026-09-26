@@ -8,7 +8,7 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ whatsappNumber }) => {
   return (
     <footer className="bg-stone-900 text-stone-300 py-12">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-stone-800">
           {/* Location & Brand */}
           <div className="space-y-3">

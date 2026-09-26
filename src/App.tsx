@@ -83,14 +83,14 @@ export default function App() {
       <Hero onScrollToTable={scrollToTable} />
 
       {/* Main Services Selection Area */}
-      <main id="tabla-servicios" className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-10 w-full">
+      <main id="tabla-servicios" className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-10 w-full">
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
             <h2 className="text-2xl font-bold text-stone-900 tracking-tight">
-              Selecciona los servicios para el paquete
+              Elegí los servicios para el paquete
             </h2>
             <p className="text-xs sm:text-sm text-stone-600 mt-1">
-              Marca los servicios que deseas incluir de cada negocio. Puedes elegir todos los que quieras.
+              Marcá los servicios que te gustaría incluir en tu paquete. Podés elegir todos los que quieras.
             </p>
           </div>
 
@@ -129,11 +129,11 @@ export default function App() {
             <p className="text-xs text-stone-500">
               {isDiscountApplied ? (
                 <span>
-                  Total con descuento: <strong className="text-stone-900">${finalTotal.toLocaleString('es-AR')}</strong> (Ahorras ${discountSavings.toLocaleString('es-AR')})
+                  Total con descuento: <strong className="text-stone-900">${finalTotal.toLocaleString('es-AR')}</strong> (Ahorrás ${discountSavings.toLocaleString('es-AR')})
                 </span>
               ) : selectedServices.length === 2 ? (
                 <span className="text-[#9C5B52] font-medium">
-                  ¡Suma 1 servicio más para recibir 10% de descuento en el total!
+                  ¡Sumá 1 servicio más para recibir 10% de descuento en el total!
                 </span>
               ) : (
                 <span>Total: ${subtotal.toLocaleString('es-AR')}</span>
@@ -147,7 +147,7 @@ export default function App() {
             className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-stone-900 rounded-lg hover:bg-stone-800 disabled:opacity-40 disabled:pointer-events-none transition-colors shadow-xs"
           >
             <ShoppingBag className="w-4 h-4" />
-            <span>Confirmar Datos y Enviar a WhatsApp</span>
+            <span>Confirmar datos y enviar por WhatsApp</span>
             <ArrowRight className="w-4 h-4 text-stone-400" />
           </button>
         </div>
@@ -171,7 +171,7 @@ export default function App() {
       {/* Sticky Bottom Bar on mobile/desktop when services are selected */}
       {selectedServices.length > 0 && !isCheckoutOpen && (
         <div className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-t border-stone-200 py-3 px-4 shadow-lg">
-          <div className="max-w-5xl mx-auto flex items-center justify-between gap-3">
+          <div className="max-w-6xl mx-auto flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <span className="text-xs sm:text-sm font-bold text-stone-900">
                 {selectedServices.length} {selectedServices.length === 1 ? 'servicio' : 'servicios'}
