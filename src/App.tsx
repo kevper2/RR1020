@@ -6,19 +6,18 @@
 import React, { useState, useMemo } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { DiscountBanner } from './components/DiscountBanner';
 import { ServicesTable } from './components/ServicesTable';
 import { CheckoutDrawer } from './components/CheckoutDrawer';
 import { Footer } from './components/Footer';
+import { ScrollEffects } from './components/ScrollEffects';
 import { SERVICES_LIST } from './data/servicesData';
 import { BookingFormState } from './types';
-import { ShoppingBag, ArrowRight, Sparkles, Check, Calendar, MapPin } from 'lucide-react';
+import { ShoppingBag, ArrowRight } from 'lucide-react';
 
 const CLINIC_WHATSAPP = '+54 9 2944 33-5996';
 
 export default function App() {
-  // Pre-select 1 or 2 options initially to show functionality, or start empty. Let's start with 2 popular ones:
-  const [selectedIds, setSelectedIds] = useState<string[]>(['pel-1', 'man-2']);
+  const [selectedIds, setSelectedIds] = useState<string[]>(['pel-1', 'man-3', 'rop-4']);
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
   // Form State
@@ -58,9 +57,9 @@ export default function App() {
     return selectedServices.reduce((sum, s) => sum + s.price, 0);
   }, [selectedServices]);
 
-  // Discount rule: 3 or more services for 10% discount
+  // Discount rule: 3 or more services for 15% discount
   const isDiscountApplied = selectedServices.length >= 3;
-  const discountSavings = isDiscountApplied ? Math.round(subtotal * 0.1) : 0;
+  const discountSavings = isDiscountApplied ? Math.round(subtotal * 0.15) : 0;
   const finalTotal = subtotal - discountSavings;
 
   const scrollToTable = () => {
@@ -71,7 +70,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF7F5] text-stone-800 font-sans selection:bg-[#EAD8D0]">
+    <div className="min-h-screen flex flex-col bg-[#fbf9fc] text-[#4c4664] font-sans selection:bg-[#e6c0e9] selection:text-[#4c4664] relative">
+      <ScrollEffects />
+
       {/* Top Header */}
       <Header
         selectedCount={selectedServices.length}
@@ -79,81 +80,75 @@ export default function App() {
         onOpenCheckout={() => setIsCheckoutOpen(true)}
       />
 
-      {/* Hero Section */}
-      <Hero onScrollToTable={scrollToTable} />
+      {/* Hero Section with Beneficio Especial container moved to top */}
+      <Hero
+        onScrollToTable={scrollToTable}
+        selectedCount={selectedServices.length}
+        discountApplied={isDiscountApplied}
+        savingsAmount={discountSavings}
+      />
 
       {/* Main Services Selection Area */}
-      <main id="tabla-servicios" className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-10 w-full">
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <main id="tabla-servicios" className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-10 w-full relative z-10">
+        <div className="scroll-reveal mb-6 sm:mb-8">
           <div>
-            <h2 className="text-2xl font-bold text-stone-900 tracking-tight">
-              Elegí los servicios para el paquete
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-story-script text-[#4c4664] tracking-normal leading-tight">
+              Elegí los servicios y productos del regalo
             </h2>
-            <p className="text-xs sm:text-sm text-stone-600 mt-1">
-              Marcá los servicios que te gustaría incluir en tu paquete. Podés elegir todos los que quieras.
+            <p className="text-xs sm:text-sm md:text-base text-[#8d89a6] font-light mt-1.5">
+              Marcá los servicios y productos que te gustaría incluir en tu regalo. Podés elegir todos los que quieras.
             </p>
-          </div>
-
-          <div className="flex items-center gap-2 text-xs text-stone-500 font-medium self-start sm:self-auto bg-white px-3 py-1.5 rounded-lg border border-stone-200">
-            <Calendar className="w-3.5 h-3.5 text-[#B87364]" />
-            <span>Validez: 30 días</span>
           </div>
         </div>
 
-        {/* Dynamic 10% Discount Banner */}
-        <DiscountBanner
-          selectedCount={selectedServices.length}
-          discountApplied={isDiscountApplied}
-          savingsAmount={discountSavings}
-        />
-
-        {/* The Simple Selection Tables (5 options per business, no photos, no long descriptions) */}
+        {/* The Simple Selection Tables */}
         <ServicesTable selectedIds={selectedIds} onToggle={handleToggle} />
 
-        {/* Summary Callout Card at bottom of table */}
-        <div className="mt-10 p-5 sm:p-6 bg-white rounded-xl border border-stone-200 shadow-xs flex flex-col md:flex-row items-center justify-between gap-5">
-          <div className="space-y-1 text-center md:text-left">
-            <span className="text-xs uppercase tracking-wider text-[#9C5B52] font-bold">
-              Resumen del Paquete Regalo
-            </span>
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-              <span className="text-xl font-bold text-stone-900">
-                {selectedServices.length} {selectedServices.length === 1 ? 'servicio elegido' : 'servicios elegidos'}
+        {/* Summary Callout Bar at bottom of table - Sleek Horizontal Strip */}
+        <div className="scroll-reveal delay-200 mt-8 px-5 sm:px-7 py-3.5 sm:py-4 bg-white rounded-2xl border border-[#bfabcb]/40 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4 card-glow-subtle">
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <div className="flex items-center gap-2.5">
+              <span className="text-xl sm:text-2xl font-story-script text-[#4c4664] tracking-normal whitespace-nowrap">
+                {selectedServices.length} {selectedServices.length === 1 ? 'opción' : 'opciones'}
               </span>
               {isDiscountApplied && (
-                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded">
-                  10% OFF Aplicado
+                <span className="text-[11px] font-normal text-[#4c4664] bg-[#e6c0e9]/50 border border-[#bfabcb]/50 px-2 py-0.5 rounded-full whitespace-nowrap">
+                  15% OFF
                 </span>
               )}
             </div>
-            <p className="text-xs text-stone-500">
+
+            <div className="h-4 w-px bg-[#bfabcb]/30 hidden sm:block" />
+
+            <div className="text-xs sm:text-sm text-[#8d89a6] font-light">
               {isDiscountApplied ? (
                 <span>
-                  Total con descuento: <strong className="text-stone-900">${finalTotal.toLocaleString('es-AR')}</strong> (Ahorrás ${discountSavings.toLocaleString('es-AR')})
+                  Total con descuento: <strong className="text-base sm:text-lg text-[#4c4664] font-medium ml-1">${finalTotal.toLocaleString('es-AR')}</strong>
+                  <span className="ml-2 text-xs text-[#8d89a6]">(Ahorrás ${discountSavings.toLocaleString('es-AR')})</span>
                 </span>
               ) : selectedServices.length === 2 ? (
-                <span className="text-[#9C5B52] font-medium">
-                  ¡Sumá 1 servicio más para recibir 10% de descuento en el total!
+                <span className="text-[#8d89a6]">
+                  Total: <strong className="text-base text-[#4c4664] font-medium mr-1">${subtotal.toLocaleString('es-AR')}</strong>· ¡Sumá 1 opción más para 15% OFF!
                 </span>
               ) : (
-                <span>Total: ${subtotal.toLocaleString('es-AR')}</span>
+                <span>Total: <strong className="text-base text-[#4c4664] font-medium ml-1">${subtotal.toLocaleString('es-AR')}</strong></span>
               )}
-            </p>
+            </div>
           </div>
 
           <button
             onClick={() => setIsCheckoutOpen(true)}
             disabled={selectedServices.length === 0}
-            className="w-full md:w-auto flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-stone-900 rounded-lg hover:bg-stone-800 disabled:opacity-40 disabled:pointer-events-none transition-colors shadow-xs"
+            className="flex items-center justify-center gap-2 px-6 sm:px-7 py-2.5 sm:py-3 text-sm sm:text-base font-button tracking-wide text-white bg-[#8d89a6] hover:bg-[#4c4664] rounded-xl disabled:opacity-40 disabled:pointer-events-none transition-all shadow-xs active:scale-[0.99] whitespace-nowrap shrink-0 self-stretch sm:self-auto"
           >
-            <ShoppingBag className="w-4 h-4" />
-            <span>Confirmar datos y enviar por WhatsApp</span>
-            <ArrowRight className="w-4 h-4 text-stone-400" />
+            <ShoppingBag className="w-4 h-4 text-[#f2d5f8] shrink-0" />
+            <span>Confirmar regalo</span>
+            <ArrowRight className="w-4 h-4 text-[#f2d5f8] shrink-0" />
           </button>
         </div>
       </main>
 
-      {/* Footer with address, Instagrams and 30-day validity */}
+      {/* Footer with address, Instagrams and 60-day validity */}
       <Footer whatsappNumber={CLINIC_WHATSAPP} />
 
       {/* Simple Checkout Modal/Drawer */}
@@ -170,29 +165,31 @@ export default function App() {
 
       {/* Sticky Bottom Bar on mobile/desktop when services are selected */}
       {selectedServices.length > 0 && !isCheckoutOpen && (
-        <div className="fixed bottom-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-t border-stone-200 py-3 px-4 shadow-lg">
-          <div className="max-w-6xl mx-auto flex items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
-              <span className="text-xs sm:text-sm font-bold text-stone-900">
-                {selectedServices.length} {selectedServices.length === 1 ? 'servicio' : 'servicios'}
+        <div className="fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-[#bfabcb]/40 py-2 sm:py-2.5 px-3 sm:px-4 shadow-md">
+          <div className="max-w-6xl mx-auto flex flex-row items-center justify-between gap-2 flex-nowrap">
+            {/* Left Info: 3 opciones · 15% OFF · $80.750 */}
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-nowrap whitespace-nowrap min-w-0">
+              <span className="text-xs sm:text-sm font-medium text-[#4c4664] whitespace-nowrap shrink-0">
+                {selectedServices.length} {selectedServices.length === 1 ? 'opción' : 'opciones'}
               </span>
               {isDiscountApplied && (
-                <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
-                  10% OFF
+                <span className="text-[10px] sm:text-[11px] font-normal text-[#4c4664] bg-[#e6c0e9]/50 border border-[#bfabcb]/50 px-1.5 py-0.5 rounded-md whitespace-nowrap shrink-0">
+                  15% OFF
                 </span>
               )}
-              <span className="text-stone-300">·</span>
-              <span className="text-sm font-extrabold text-stone-900 tabular-nums">
+              <span className="text-[#bfabcb] shrink-0 text-xs sm:text-sm">·</span>
+              <span className="text-xs sm:text-sm font-bold text-[#4c4664] tabular-nums whitespace-nowrap shrink-0">
                 ${finalTotal.toLocaleString('es-AR')}
               </span>
             </div>
 
+            {/* Right Button: Pedir por WhatsApp */}
             <button
               onClick={() => setIsCheckoutOpen(true)}
-              className="flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-emerald-700 hover:bg-emerald-800 rounded-lg transition-colors shadow-xs"
+              className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-button tracking-wide text-white bg-[#8d89a6] hover:bg-[#4c4664] rounded-xl transition-colors shadow-xs whitespace-nowrap shrink-0"
             >
-              <span>Pedir por WhatsApp</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <span className="whitespace-nowrap">Pedir por WhatsApp</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#f2d5f8] shrink-0" />
             </button>
           </div>
         </div>

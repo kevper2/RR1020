@@ -28,7 +28,7 @@ export const BUSINESSES_INFO: Record<string, BusinessInfo> = {
 };
 
 export const SERVICES_LIST: ServiceItem[] = [
-  // 1. Peluquería: JV Estilista (5 opciones actualizadas)
+  // 1. Peluquería: JV Estilista
   {
     id: 'pel-1',
     name: 'Corte de Pelo',
@@ -55,41 +55,47 @@ export const SERVICES_LIST: ServiceItem[] = [
   },
   {
     id: 'pel-5',
-    name: 'Keratina / Bótox',
+    name: 'Keratina',
     category: 'peluqueria',
     price: 73000,
   },
+  {
+    id: 'pel-6',
+    name: 'Peinado',
+    category: 'peluqueria',
+    price: 45000,
+  },
 
-  // 2. Manicuría: Yasmin Studio de Uñas (5 opciones)
+  // 2. Manicuría: Yasmin Studio de Uñas (5 opciones actualizadas)
   {
     id: 'man-1',
-    name: 'Esmaltado semipermanente',
+    name: 'Semi Perm',
     category: 'manicuria',
-    price: 14000,
+    price: 28000,
   },
   {
     id: 'man-2',
-    name: 'Capping gel con semipermanente',
+    name: 'Capping',
     category: 'manicuria',
-    price: 18000,
+    price: 30000,
   },
   {
     id: 'man-3',
-    name: 'Soft gel / Uñas esculpidas',
+    name: 'Soft Gel',
     category: 'manicuria',
-    price: 24000,
+    price: 34000,
   },
   {
     id: 'man-4',
-    name: 'Belleza de pies semipermanente',
+    name: 'Poly Gel',
     category: 'manicuria',
-    price: 16000,
+    price: 38000,
   },
   {
     id: 'man-5',
-    name: 'Nail art & diseño decorativo',
+    name: 'French o 2 Diseños',
     category: 'manicuria',
-    price: 6000,
+    price: 16000,
   },
 
   // 3. Ropa: Jazmín (5 opciones actualizadas)

@@ -1,12 +1,78 @@
 @import "tailwindcss";
 
 @layer base {
-  *, ::before, ::after {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+  :root {
+    --font-script: 'Story Script', cursive, sans-serif;
+    --font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+    /* Specified Palette */
+    --color-cotton-rose: #eac8ca;
+    --color-lavender-veil: #f2d5f8;
+    --color-pink-orchid: #e6c0e9;
+    --color-lilac: #bfabcb;
+    --color-lavender-grey: #8d89a6;
+    --color-deep-lavender: #4c4664;
   }
 
   body {
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-    background-color: #FAF7F5;
+    font-family: var(--font-sans);
+    background-color: #fbf9fc;
+    color: #4c4664;
+    overflow-x: hidden;
   }
+
+  /* Elegant feminine script with lighter, refined weight */
+  h1, h2, h3, .font-script, .font-serif-elegant {
+    font-family: var(--font-script);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+  }
+
+  /* Buttons with delicate, non-chunky weight */
+  button, .font-button {
+    font-family: var(--font-script);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* Specific script typography helpers */
+.font-story-script {
+  font-family: 'Story Script', cursive, sans-serif;
+  font-weight: 500;
+}
+
+.font-button-script {
+  font-family: 'Story Script', cursive, sans-serif;
+  font-weight: 400;
+}
+
+/* Scroll Reveal Animations - safe fallback so items are always visible */
+.scroll-reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+
+/* Subtle card hover without image distraction */
+.card-glow-subtle {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+}
+
+.card-glow-subtle:hover {
+  border-color: #bfabcb;
+  box-shadow: 0 8px 24px -6px rgba(141, 137, 166, 0.15);
 }

@@ -12,7 +12,7 @@ export const ServicesTable: React.FC<ServicesTableProps> = ({ selectedIds, onTog
   const categories: BusinessCategory[] = ['peluqueria', 'manicuria', 'ropa'];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">
       {categories.map((catKey) => {
         const info = BUSINESSES_INFO[catKey];
         const services = SERVICES_LIST.filter((s) => s.category === catKey);
@@ -21,90 +21,94 @@ export const ServicesTable: React.FC<ServicesTableProps> = ({ selectedIds, onTog
         return (
           <div
             key={catKey}
-            className="bg-white rounded-xl border border-stone-200 shadow-xs overflow-hidden flex flex-col h-full"
+            className="card-glow-subtle bg-white rounded-2xl border border-[#bfabcb]/40 shadow-xs overflow-hidden flex flex-col h-full"
           >
-            {/* Business Header */}
-            <div className="p-4 sm:p-5 bg-stone-50/80 border-b border-stone-200 flex flex-col justify-between gap-3">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-1">
-                  <span className="text-xs uppercase tracking-wider font-bold text-[#9C5B52]">
-                    {info.typeLabel}
-                  </span>
-                  <span className="text-[11px] text-stone-500 font-medium">
-                    {selectedCountInGroup > 0 ? (
-                      <span className="text-[#9C5B52] font-semibold bg-[#FAF3F0] px-2 py-0.5 rounded border border-[#E8D6CF]">
-                        {selectedCountInGroup} de 5
-                      </span>
-                    ) : (
-                      '5 opciones'
-                    )}
-                  </span>
-                </div>
+            {/* Compact Business Header with solid background & delicate fonts */}
+            <div className="px-4 py-3.5 bg-[#f2d5f8]/35 border-b border-[#bfabcb]/30">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-[11px] uppercase tracking-widest font-normal text-[#8d89a6]">
+                  {info.typeLabel}
+                </span>
 
-                <h3 className="text-lg font-bold text-stone-900 leading-snug">
-                  {info.name}
-                </h3>
-                <p className="text-xs text-stone-500 mt-1 line-clamp-2 min-h-[2rem]">
-                  {info.subtitle}
-                </p>
-              </div>
-
-              {/* Instagram link */}
-              <div>
                 <a
                   href={info.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-stone-700 bg-white border border-stone-200 hover:border-stone-400 hover:text-stone-950 transition-colors"
-                  title={`Ver Instagram de ${info.name}`}
+                  className="inline-flex items-center gap-1 text-[11px] font-normal text-[#8d89a6] hover:text-[#4c4664] transition-colors"
+                  title={`Instagram de ${info.name}`}
                 >
                   <span>{info.instagramHandle}</span>
-                  <ExternalLink className="w-3 h-3 text-stone-400" />
+                  <ExternalLink className="w-2.5 h-2.5 text-[#bfabcb]" />
                 </a>
               </div>
+
+              <div className="flex items-baseline justify-between gap-2 mt-1">
+                <h3 className="text-2xl sm:text-[27px] font-story-script text-[#4c4664] tracking-normal leading-tight">
+                  {info.name}
+                </h3>
+                {selectedCountInGroup > 0 ? (
+                  <span className="inline-flex items-center gap-1 text-[11px] font-normal text-[#4c4664] bg-[#e6c0e9]/50 px-2.5 py-0.5 rounded-full border border-[#bfabcb]/40">
+                    <span>{selectedCountInGroup} de {services.length}</span>
+                  </span>
+                ) : (
+                  <span className="text-[11px] text-[#8d89a6] font-light">{services.length} opciones</span>
+                )}
+              </div>
+
+              <p className="text-[11px] sm:text-xs text-[#8d89a6] font-light mt-0.5 truncate">
+                {info.subtitle}
+              </p>
             </div>
 
-            {/* Simple Table Rows */}
-            <div className="divide-y divide-stone-100 flex-1">
+            {/* Compact Table Rows with clean solid backgrounds */}
+            <div className="divide-y divide-[#bfabcb]/20 flex-1 bg-white">
               {services.map((service) => {
                 const isChecked = selectedIds.includes(service.id);
                 return (
-                  <label
+                  <button
+                    type="button"
                     key={service.id}
                     onClick={() => onToggle(service.id)}
-                    className={`flex items-start justify-between p-3.5 sm:p-4 cursor-pointer select-none transition-colors gap-3 ${
+                    className={`w-full text-left flex items-center justify-between px-3.5 py-2.5 cursor-pointer select-none transition-colors duration-150 gap-2.5 group ${
                       isChecked
-                        ? 'bg-[#FAF3F0]/70 hover:bg-[#FAF3F0]'
-                        : 'hover:bg-stone-50/80'
+                        ? 'bg-[#f2d5f8]/45 hover:bg-[#f2d5f8]/60'
+                        : 'hover:bg-[#fbf9fc]'
                     }`}
                   >
-                    <div className="flex items-start gap-3 min-w-0 flex-1">
-                      {/* Checkbox */}
+                    <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                      {/* Checkbox in Lavender Grey / Lilac */}
                       <div
-                        className={`w-5 h-5 rounded flex items-center justify-center border transition-all shrink-0 mt-0.5 ${
+                        className={`w-4 h-4 rounded flex items-center justify-center border transition-all shrink-0 ${
                           isChecked
-                            ? 'bg-[#B87364] border-[#B87364] text-white shadow-xs'
-                            : 'border-stone-300 bg-white hover:border-stone-400'
+                            ? 'bg-[#8d89a6] border-[#8d89a6] text-white'
+                            : 'border-[#bfabcb] bg-white group-hover:border-[#8d89a6]'
                         }`}
                       >
-                        {isChecked && <Check className="w-3.5 h-3.5 stroke-[3]" />}
+                        {isChecked && <Check className="w-3 h-3 stroke-[2.5]" />}
                       </div>
 
                       <span
-                        className={`text-xs sm:text-sm leading-snug ${
-                          isChecked ? 'text-stone-950 font-semibold' : 'text-stone-700'
+                        className={`text-xs sm:text-[13px] leading-tight truncate transition-colors ${
+                          isChecked
+                            ? 'text-[#4c4664] font-medium'
+                            : 'text-[#4c4664]/85 font-normal group-hover:text-[#4c4664]'
                         }`}
+                        title={service.name}
                       >
                         {service.name}
                       </span>
                     </div>
 
-                    <div className="shrink-0 text-right mt-0.5">
-                      <span className="text-xs sm:text-sm font-bold text-stone-900 tabular-nums">
+                    <div className="shrink-0 text-right">
+                      <span
+                        className={`text-xs sm:text-[13px] tabular-nums transition-colors ${
+                          isChecked ? 'font-semibold text-[#4c4664]' : 'font-normal text-[#8d89a6]'
+                        }`}
+                      >
                         ${service.price.toLocaleString('es-AR')}
                       </span>
                     </div>
-                  </label>
+                  </button>
                 );
               })}
             </div>

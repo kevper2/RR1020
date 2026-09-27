@@ -9,50 +9,50 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ selectedCount, onOpenCheckout }) => {
   return (
-    <header className="sticky top-0 z-40 bg-[#FAF7F5]/95 backdrop-blur-md border-b border-stone-200">
+    <header className="sticky top-0 z-40 bg-white border-b border-[#bfabcb]/40 shadow-xs">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between gap-4">
         {/* Brand / Place Name */}
         <div className="flex items-center gap-3 shrink-0">
-          <a href="#" className="flex flex-col">
-            <span className="text-xl sm:text-2xl font-bold tracking-tight text-stone-900">
-              Rudecindo Roca 1020
+          <a href="#" className="flex flex-col group">
+            <span className="text-3xl sm:text-4xl font-story-script text-[#4c4664] group-hover:text-[#8d89a6] transition-colors leading-tight">
+              Las 3
             </span>
           </a>
         </div>
 
-        {/* 3 Instagram Links in the Hero Bar */}
+        {/* 3 Instagram Links in the Header Bar */}
         <nav className="hidden sm:flex items-center gap-2 md:gap-3 text-xs">
           <a
             href="https://www.instagram.com/peluq_jv"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-stone-700 bg-white border border-stone-200/90 hover:border-stone-400 hover:text-stone-950 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[#4c4664] bg-white border border-[#bfabcb]/50 hover:border-[#8d89a6] hover:bg-[#f2d5f8]/30 transition-all"
             title="Instagram JV Estilista (Peluquería)"
           >
-            <Instagram className="w-3.5 h-3.5 text-[#9C5B52]" />
-            <span className="font-semibold">JV Estilista</span>
+            <Instagram className="w-3.5 h-3.5 text-[#8d89a6]" />
+            <span className="font-normal">JV Estilista</span>
           </a>
 
           <a
             href="https://www.instagram.com/yasmin_nails.sma"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-stone-700 bg-white border border-stone-200/90 hover:border-stone-400 hover:text-stone-950 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[#4c4664] bg-white border border-[#bfabcb]/50 hover:border-[#8d89a6] hover:bg-[#f2d5f8]/30 transition-all"
             title="Instagram Yasmin Studio de Uñas (Manicura)"
           >
-            <Instagram className="w-3.5 h-3.5 text-[#9C5B52]" />
-            <span className="font-semibold">Yasmin Nails</span>
+            <Instagram className="w-3.5 h-3.5 text-[#8d89a6]" />
+            <span className="font-normal">Yasmin Nails</span>
           </a>
 
           <a
             href="https://www.instagram.com/ropainteriorjazmin"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-stone-700 bg-white border border-stone-200/90 hover:border-stone-400 hover:text-stone-950 transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[#4c4664] bg-white border border-[#bfabcb]/50 hover:border-[#8d89a6] hover:bg-[#f2d5f8]/30 transition-all"
             title="Instagram Jazmín (Ropa interior y deportiva)"
           >
-            <Instagram className="w-3.5 h-3.5 text-[#9C5B52]" />
-            <span className="font-semibold">Jazmín</span>
+            <Instagram className="w-3.5 h-3.5 text-[#8d89a6]" />
+            <span className="font-normal">Jazmín</span>
           </a>
         </nav>
 
@@ -60,13 +60,13 @@ export const Header: React.FC<HeaderProps> = ({ selectedCount, onOpenCheckout })
         <div className="flex items-center gap-3 shrink-0">
           <button
             onClick={onOpenCheckout}
-            className="flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold text-white bg-stone-900 rounded-lg hover:bg-stone-800 transition-colors shadow-xs"
-            aria-label="Ver paquete regalo"
+            className="flex items-center gap-2 px-4 py-2 text-sm sm:text-base font-button text-white bg-[#8d89a6] hover:bg-[#4c4664] rounded-xl transition-all shadow-xs"
+            aria-label="Ver regalo"
           >
-            <ShoppingBag className="w-4 h-4 text-stone-300" />
-            <span>Paquete</span>
+            <ShoppingBag className="w-4 h-4 text-[#f2d5f8]" />
+            <span>Regalo</span>
             {selectedCount > 0 ? (
-              <span className="ml-1 px-1.5 py-0.5 text-xs font-bold bg-[#B87364] text-white rounded">
+              <span className="ml-1 px-1.5 py-0.5 text-xs font-sans font-medium bg-[#e6c0e9] text-[#4c4664] rounded-md">
                 {selectedCount}
               </span>
             ) : null}
@@ -75,35 +75,35 @@ export const Header: React.FC<HeaderProps> = ({ selectedCount, onOpenCheckout })
       </div>
 
       {/* Mobile-only secondary instagram strip */}
-      <div className="sm:hidden flex items-center justify-around px-3 py-1.5 bg-stone-100/70 border-t border-stone-200/60 text-[11px]">
+      <div className="sm:hidden flex items-center justify-around px-3 py-1.5 bg-[#f2d5f8]/30 border-t border-[#bfabcb]/30 text-[11px]">
         <a
           href="https://www.instagram.com/peluq_jv"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1 text-stone-600 hover:text-stone-900"
+          className="flex items-center gap-1 text-[#4c4664] font-normal"
         >
-          <Instagram className="w-3 h-3 text-[#9C5B52]" />
-          <span>@peluq_jv</span>
+          <Instagram className="w-3 h-3 text-[#8d89a6]" />
+          <span>JV Estilista</span>
         </a>
-        <span className="text-stone-300">·</span>
+        <span className="text-[#bfabcb]">·</span>
         <a
           href="https://www.instagram.com/yasmin_nails.sma"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1 text-stone-600 hover:text-stone-900"
+          className="flex items-center gap-1 text-[#4c4664] font-normal"
         >
-          <Instagram className="w-3 h-3 text-[#9C5B52]" />
-          <span>@yasmin_nails</span>
+          <Instagram className="w-3 h-3 text-[#8d89a6]" />
+          <span>Yasmin Nails</span>
         </a>
-        <span className="text-stone-300">·</span>
+        <span className="text-[#bfabcb]">·</span>
         <a
           href="https://www.instagram.com/ropainteriorjazmin"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1 text-stone-600 hover:text-stone-900"
+          className="flex items-center gap-1 text-[#4c4664] font-normal"
         >
-          <Instagram className="w-3 h-3 text-[#9C5B52]" />
-          <span>@ropainteriorjazmin</span>
+          <Instagram className="w-3 h-3 text-[#8d89a6]" />
+          <span>Jazmín</span>
         </a>
       </div>
     </header>

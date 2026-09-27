@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Check, Gift } from 'lucide-react';
+import { Check, Gift } from 'lucide-react';
 
 interface DiscountBannerProps {
   selectedCount: number;
@@ -15,47 +15,47 @@ export const DiscountBanner: React.FC<DiscountBannerProps> = ({
   const needed = Math.max(0, 3 - selectedCount);
 
   return (
-    <div className="bg-[#FAF3F0] border border-[#E8D6CF] rounded-xl p-4 sm:p-5 mb-8">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <div className="flex items-start gap-3">
-          <div className="p-2 rounded-lg bg-white border border-[#E8D6CF] text-[#9C5B52] shrink-0">
+    <div className="scroll-reveal bg-white border border-[#bfabcb]/40 rounded-2xl p-4 sm:p-5 mb-8 shadow-xs relative">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+        <div className="flex items-start gap-3.5">
+          <div className="p-2.5 rounded-xl bg-[#f2d5f8]/50 border border-[#bfabcb]/40 text-[#4c4664] shrink-0">
             {discountApplied ? (
-              <Check className="w-4 h-4 text-emerald-600 stroke-[3]" />
+              <Check className="w-4 h-4 text-[#4c4664] stroke-[2.5]" />
             ) : (
-              <Gift className="w-4 h-4" />
+              <Gift className="w-4 h-4 text-[#8d89a6]" />
             )}
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-xs uppercase tracking-wider font-bold text-[#9C5B52]">
+              <span className="text-[11px] uppercase tracking-widest font-normal text-[#8d89a6]">
                 Beneficio Especial
               </span>
-              <span className="text-xs text-stone-400">·</span>
-              <span className="text-xs text-stone-600 font-medium">Día de la Madre</span>
+              <span className="text-xs text-[#bfabcb]">·</span>
+              <span className="text-xs text-[#8d89a6] font-light">Día de la Madre</span>
             </div>
 
-            <h3 className="text-base sm:text-lg font-bold text-stone-900 mt-0.5">
+            <h3 className="text-xl sm:text-2xl font-story-script text-[#4c4664] mt-1 tracking-normal">
               {discountApplied
-                ? '¡Descuento del 10% activado en tu paquete!'
-                : '10% de descuento a partir de 3 servicios'}
+                ? '¡Descuento del 15% activado en tu regalo!'
+                : '15% de descuento a partir de 3 servicios'}
             </h3>
 
-            <p className="text-xs sm:text-sm text-stone-600 mt-0.5">
+            <p className="text-xs sm:text-sm text-[#8d89a6] font-light mt-0.5">
               {discountApplied ? (
                 <span>
-                  Elegiste <strong className="text-stone-900">{selectedCount} servicios</strong>. Ahorrás{' '}
-                  <strong className="text-emerald-700 font-bold tabular-nums">
+                  Elegiste <strong className="text-[#4c4664] font-medium">{selectedCount} {selectedCount === 1 ? 'opción' : 'opciones'}</strong>. Ahorrás{' '}
+                  <strong className="text-[#4c4664] font-medium tabular-nums">
                     ${savingsAmount.toLocaleString('es-AR')}
                   </strong>{' '}
                   en el total.
                 </span>
               ) : selectedCount === 0 ? (
-                'Marcá los servicios que te gustaría incluir en las tablas de abajo. Con 3 o más servicios recibís 10% de descuento en el total.'
+                'Marcá los servicios y productos que te gustaría incluir. Con 3 o más recibís 15% de descuento en el total.'
               ) : (
                 <span>
-                  Llevás <strong className="text-stone-900">{selectedCount} {selectedCount === 1 ? 'servicio' : 'servicios'}</strong>.{' '}
+                  Llevás <strong className="text-[#4c4664] font-medium">{selectedCount} {selectedCount === 1 ? 'opción' : 'opciones'}</strong>.{' '}
                   {needed > 0
-                    ? `Sumá ${needed} más para activar el 10% de descuento.`
+                    ? `Sumá ${needed} más para activar el 15% de descuento.`
                     : ''}
                 </span>
               )}
@@ -63,12 +63,22 @@ export const DiscountBanner: React.FC<DiscountBannerProps> = ({
           </div>
         </div>
 
-        {/* Progress tag */}
-        <div className="shrink-0 flex items-center gap-2 self-start sm:self-center bg-white px-3 py-1.5 rounded-lg border border-[#E8D6CF] text-xs font-semibold text-stone-800">
-          <span>Servicios elegidos:</span>
-          <span className="text-[#9C5B52] tabular-nums font-bold">
-            {selectedCount} {discountApplied ? '(10% OFF ✓)' : ''}
-          </span>
+        {/* Progress Pills */}
+        <div className="flex items-center gap-1.5 self-end sm:self-center shrink-0">
+          {[1, 2, 3].map((step) => {
+            const isFilled = selectedCount >= step;
+            return (
+              <div
+                key={step}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  isFilled
+                    ? 'w-8 bg-[#8d89a6]'
+                    : 'w-6 bg-[#f2d5f8]'
+                }`}
+                title={`Paso ${step} de 3 para el descuento`}
+              />
+            );
+          })}
         </div>
       </div>
     </div>
