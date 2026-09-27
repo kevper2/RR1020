@@ -3,11 +3,12 @@ import { MapPin, Phone, Instagram, ShieldCheck, Calendar } from 'lucide-react';
 
 interface FooterProps {
   whatsappNumber: string;
+  hasStickyBar?: boolean;
 }
 
-export const Footer: React.FC<FooterProps> = ({ whatsappNumber }) => {
+export const Footer: React.FC<FooterProps> = ({ whatsappNumber, hasStickyBar = false }) => {
   return (
-    <footer className="bg-[#4c4664] text-[#e6c0e9] py-12 border-t border-[#8d89a6]/30">
+    <footer className={`bg-[#4c4664] text-[#e6c0e9] pt-12 border-t border-[#8d89a6]/30 transition-all ${hasStickyBar ? 'pb-24 sm:pb-28' : 'pb-12'}`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-[#8d89a6]/30">
           {/* Location & Brand */}
@@ -66,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ whatsappNumber }) => {
                   className="flex items-center gap-1.5 text-[#f2d5f8] hover:text-white transition-colors"
                 >
                   <Instagram className="w-3.5 h-3.5 text-[#bfabcb]" />
-                  <span>Ropa interior & deportiva: <strong className="font-medium text-white">Jazmín</strong> (@ropainteriorjazmin)</span>
+                  <span>Ropa interior & deportiva: <strong className="font-medium text-white">Jazmín Ropa Interior</strong> (@ropainteriorjazmin)</span>
                 </a>
               </li>
             </ul>

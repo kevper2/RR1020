@@ -15,62 +15,66 @@ export const DiscountBanner: React.FC<DiscountBannerProps> = ({
   const needed = Math.max(0, 3 - selectedCount);
 
   return (
-    <div className="scroll-reveal bg-white border border-[#bfabcb]/40 rounded-2xl p-4 sm:p-5 mb-8 shadow-xs relative">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
-        <div className="flex items-start gap-3.5">
-          <div className="p-2.5 rounded-xl bg-[#f2d5f8]/50 border border-[#bfabcb]/40 text-[#4c4664] shrink-0">
+    <div className="scroll-reveal bg-white border border-[#bfabcb]/40 rounded-2xl p-4 sm:p-5 mb-8 shadow-xs relative text-center">
+      <div className="flex flex-col items-center justify-center gap-2.5 relative z-10 text-center">
+        {/* Top Tag with Icon */}
+        <div className="flex items-center justify-center gap-2">
+          <div className="p-1 rounded-md bg-[#f2d5f8]/50 border border-[#bfabcb]/40 text-[#4c4664] shrink-0">
             {discountApplied ? (
-              <Check className="w-4 h-4 text-[#4c4664] stroke-[2.5]" />
+              <Check className="w-3.5 h-3.5 text-[#4c4664] stroke-[2.5]" />
             ) : (
-              <Gift className="w-4 h-4 text-[#8d89a6]" />
+              <Gift className="w-3.5 h-3.5 text-[#8d89a6]" />
             )}
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] uppercase tracking-widest font-normal text-[#8d89a6]">
-                Beneficio Especial
+          <span className="text-[11px] uppercase tracking-widest font-normal text-[#8d89a6]">
+            Beneficio Especial
+          </span>
+          <span className="text-xs text-[#bfabcb]">·</span>
+          <span className="text-xs text-[#8d89a6] font-light">Día de la Madre</span>
+        </div>
+
+        <div>
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-story-script text-[#4c4664] mt-1 tracking-normal leading-tight">
+            {discountApplied ? (
+              <>
+                <span className="block sm:inline">¡Descuento del 15%</span>{' '}
+                <span className="block sm:inline">activado en tu regalo!</span>
+              </>
+            ) : (
+              '15% de descuento a partir de 3 servicios'
+            )}
+          </h3>
+
+          <p className="text-xs sm:text-sm text-[#8d89a6] font-light mt-1 max-w-xl mx-auto">
+            {discountApplied ? (
+              <span>
+                Elegiste <strong className="text-[#4c4664] font-medium">{selectedCount} {selectedCount === 1 ? 'opción' : 'opciones'}</strong>. Ahorrás{' '}
+                <strong className="text-[#4c4664] font-medium tabular-nums">
+                  ${savingsAmount.toLocaleString('es-AR')}
+                </strong>{' '}
+                en el total.
               </span>
-              <span className="text-xs text-[#bfabcb]">·</span>
-              <span className="text-xs text-[#8d89a6] font-light">Día de la Madre</span>
-            </div>
-
-            <h3 className="text-xl sm:text-2xl font-story-script text-[#4c4664] mt-1 tracking-normal">
-              {discountApplied
-                ? '¡Descuento del 15% activado en tu regalo!'
-                : '15% de descuento a partir de 3 servicios'}
-            </h3>
-
-            <p className="text-xs sm:text-sm text-[#8d89a6] font-light mt-0.5">
-              {discountApplied ? (
-                <span>
-                  Elegiste <strong className="text-[#4c4664] font-medium">{selectedCount} {selectedCount === 1 ? 'opción' : 'opciones'}</strong>. Ahorrás{' '}
-                  <strong className="text-[#4c4664] font-medium tabular-nums">
-                    ${savingsAmount.toLocaleString('es-AR')}
-                  </strong>{' '}
-                  en el total.
-                </span>
-              ) : selectedCount === 0 ? (
-                'Marcá los servicios y productos que te gustaría incluir. Con 3 o más recibís 15% de descuento en el total.'
-              ) : (
-                <span>
-                  Llevás <strong className="text-[#4c4664] font-medium">{selectedCount} {selectedCount === 1 ? 'opción' : 'opciones'}</strong>.{' '}
-                  {needed > 0
-                    ? `Sumá ${needed} más para activar el 15% de descuento.`
-                    : ''}
-                </span>
-              )}
-            </p>
-          </div>
+            ) : selectedCount === 0 ? (
+              'Marcá los servicios y productos que te gustaría incluir. Con 3 o más recibís 15% de descuento en el total.'
+            ) : (
+              <span>
+                Llevás <strong className="text-[#4c4664] font-medium">{selectedCount} {selectedCount === 1 ? 'opción' : 'opciones'}</strong>.{' '}
+                {needed > 0
+                  ? `Sumá ${needed} más para activar el 15% de descuento.`
+                  : ''}
+              </span>
+            )}
+          </p>
         </div>
 
         {/* Progress Pills */}
-        <div className="flex items-center gap-1.5 self-end sm:self-center shrink-0">
+        <div className="flex items-center justify-center gap-1.5 pt-1">
           {[1, 2, 3].map((step) => {
             const isFilled = selectedCount >= step;
             return (
               <div
                 key={step}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-300 ${
                   isFilled
                     ? 'w-8 bg-[#8d89a6]'
                     : 'w-6 bg-[#f2d5f8]'

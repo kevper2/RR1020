@@ -9,7 +9,7 @@ interface ServicesTableProps {
 }
 
 export const ServicesTable: React.FC<ServicesTableProps> = ({ selectedIds, onToggle }) => {
-  const categories: BusinessCategory[] = ['peluqueria', 'manicuria', 'ropa'];
+  const categories: BusinessCategory[] = ['ropa', 'manicuria', 'peluqueria'];
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 items-stretch">

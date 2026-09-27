@@ -90,15 +90,13 @@ export default function App() {
 
       {/* Main Services Selection Area */}
       <main id="tabla-servicios" className="flex-1 max-w-6xl mx-auto px-4 sm:px-6 py-10 w-full relative z-10">
-        <div className="scroll-reveal mb-6 sm:mb-8">
-          <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-story-script text-[#4c4664] tracking-normal leading-tight">
-              Elegí los servicios y productos del regalo
-            </h2>
-            <p className="text-xs sm:text-sm md:text-base text-[#8d89a6] font-light mt-1.5">
-              Marcá los servicios y productos que te gustaría incluir en tu regalo. Podés elegir todos los que quieras.
-            </p>
-          </div>
+        <div className="scroll-reveal mb-8 sm:mb-10 text-center max-w-3xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-story-script text-[#4c4664] tracking-normal leading-tight">
+            Elegí los servicios y productos del regalo
+          </h2>
+          <p className="text-xs sm:text-sm md:text-base text-[#8d89a6] font-light mt-2 max-w-xl mx-auto">
+            Marcá los servicios y productos que te gustaría incluir en tu regalo. Podés elegir todos los que quieras.
+          </p>
         </div>
 
         {/* The Simple Selection Tables */}
@@ -149,7 +147,10 @@ export default function App() {
       </main>
 
       {/* Footer with address, Instagrams and 60-day validity */}
-      <Footer whatsappNumber={CLINIC_WHATSAPP} />
+      <Footer
+        whatsappNumber={CLINIC_WHATSAPP}
+        hasStickyBar={selectedServices.length > 0 && !isCheckoutOpen}
+      />
 
       {/* Simple Checkout Modal/Drawer */}
       <CheckoutDrawer

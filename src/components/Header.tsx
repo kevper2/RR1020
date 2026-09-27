@@ -49,10 +49,10 @@ export const Header: React.FC<HeaderProps> = ({ selectedCount, onOpenCheckout })
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[#4c4664] bg-white border border-[#bfabcb]/50 hover:border-[#8d89a6] hover:bg-[#f2d5f8]/30 transition-all"
-            title="Instagram Jazmín (Ropa interior y deportiva)"
+            title="Instagram Jazmín Ropa Interior"
           >
             <Instagram className="w-3.5 h-3.5 text-[#8d89a6]" />
-            <span className="font-normal">Jazmín</span>
+            <span className="font-normal">Jazmín Ropa Interior</span>
           </a>
         </nav>
 
@@ -103,7 +103,7 @@ export const Header: React.FC<HeaderProps> = ({ selectedCount, onOpenCheckout })
           className="flex items-center gap-1 text-[#4c4664] font-normal"
         >
           <Instagram className="w-3 h-3 text-[#8d89a6]" />
-          <span>Jazmín</span>
+          <span>Jazmín Ropa Interior</span>
         </a>
       </div>
     </header>

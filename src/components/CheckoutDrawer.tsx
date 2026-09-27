@@ -38,57 +38,57 @@ export const CheckoutDrawer: React.FC<CheckoutDrawerProps> = ({
   const ropaItems = selectedItems.filter((i) => i.category === 'ropa');
 
   const generateWhatsappMessage = () => {
-    let msg = `🌸 *RESERVA DE REGALO - DÍA DE LA MADRE* 🌸\n`;
-    msg += `✨ *Las 3 · Espacio de Belleza*\n`;
-    msg += `📍 *Rudecindo Roca 1020, esq. Elordi, San Martín de los Andes*\n`;
-    msg += `🗓️ *Validez:* 60 días desde la fecha de compra\n\n`;
+    let msg = `*RESERVA DE REGALO - DÍA DE LA MADRE* :)\n`;
+    msg += `*Las 3 · Espacio de Belleza*\n`;
+    msg += `Rudecindo Roca 1020, esq. Elordi, San Martín de los Andes\n`;
+    msg += `*Validez:* 60 días desde la fecha de compra\n\n`;
 
-    msg += `🎁 *Para:* ${formData.recipientName.trim()}\n`;
-    msg += `💝 *De parte de:* ${formData.buyerName.trim() || 'No especificado'}\n`;
-    msg += `💌 *Formato de tarjeta elegido:* ${
+    msg += `*Para:* ${formData.recipientName.trim()} <3\n`;
+    msg += `*De parte de:* ${formData.buyerName.trim() || 'No especificado'}\n`;
+    msg += `*Formato de tarjeta elegido:* ${
       formData.deliveryFormat === 'fisica'
         ? 'Tarjeta Física (para retirar en el local)'
         : 'Tarjeta Digital (envío por WhatsApp)'
     }\n`;
 
     if (formData.giftMessage.trim()) {
-      msg += `💬 *Dedicatoria:*\n"${formData.giftMessage.trim()}"\n`;
+      msg += `*Dedicatoria:*\n"${formData.giftMessage.trim()}"\n`;
     }
     if (formData.notes.trim()) {
-      msg += `📝 *Observaciones:*\n${formData.notes.trim()}\n`;
+      msg += `*Observaciones:*\n${formData.notes.trim()}\n`;
     }
 
-    msg += `\n✨ *OPCIONES SELECCIONADAS (${selectedItems.length}):*\n`;
+    msg += `\n*OPCIONES SELECCIONADAS (${selectedItems.length}):*\n`;
 
-    if (peluqueriaItems.length > 0) {
-      msg += `\n💇‍♀️ *Peluquería (JV Estilista):*\n`;
-      peluqueriaItems.forEach((i) => {
-        msg += `• ${i.name} - $${i.price.toLocaleString('es-AR')}\n`;
+    if (ropaItems.length > 0) {
+      msg += `\n*Ropa interior & deportiva (Jazmín Ropa Interior):*\n`;
+      ropaItems.forEach((i) => {
+        msg += `- ${i.name} - $${i.price.toLocaleString('es-AR')}\n`;
       });
     }
 
     if (manicuriaItems.length > 0) {
-      msg += `\n💅 *Manicuría (Yasmin Studio de Uñas):*\n`;
+      msg += `\n*Manicuría (Yasmin Studio de Uñas):*\n`;
       manicuriaItems.forEach((i) => {
-        msg += `• ${i.name} - $${i.price.toLocaleString('es-AR')}\n`;
+        msg += `- ${i.name} - $${i.price.toLocaleString('es-AR')}\n`;
       });
     }
 
-    if (ropaItems.length > 0) {
-      msg += `\n👗 *Ropa interior & deportiva (Jazmín):*\n`;
-      ropaItems.forEach((i) => {
-        msg += `• ${i.name} - $${i.price.toLocaleString('es-AR')}\n`;
+    if (peluqueriaItems.length > 0) {
+      msg += `\n*Peluquería (JV Estilista):*\n`;
+      peluqueriaItems.forEach((i) => {
+        msg += `- ${i.name} - $${i.price.toLocaleString('es-AR')}\n`;
       });
     }
 
-    msg += `\n───────────────\n`;
+    msg += `\n-------------------------\n`;
     msg += `Subtotal: $${subtotal.toLocaleString('es-AR')}\n`;
     if (isDiscountEligible) {
-      msg += `🎉 Descuento especial 3+ opciones (15% OFF): -$${discountAmount.toLocaleString('es-AR')}\n`;
+      msg += `Descuento especial 3+ opciones (15% OFF): -$${discountAmount.toLocaleString('es-AR')}\n`;
     }
     msg += `*TOTAL A PAGAR: $${finalTotal.toLocaleString('es-AR')}*\n`;
-    msg += `───────────────\n\n`;
-    msg += `¡Hola! Me gustaría confirmar la reserva de este regalo para mamá. ¿Cómo procedemos con el pago y la entrega? Muchas gracias.`;
+    msg += `-------------------------\n\n`;
+    msg += `¡Hola! Me gustaría confirmar la reserva de este regalo para mamá :). ¿Cómo procedemos con el pago y la entrega? Muchas gracias!`;
 
     return msg;
   };
