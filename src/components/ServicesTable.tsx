@@ -26,7 +26,7 @@ export const ServicesTable: React.FC<ServicesTableProps> = ({ selectedIds, onTog
             {/* Compact Business Header with solid background & delicate fonts */}
             <div className="px-4 py-3.5 bg-[#f2d5f8]/35 border-b border-[#bfabcb]/30">
               <div className="flex items-center justify-between gap-2">
-                <span className="text-[11px] uppercase tracking-widest font-normal text-[#8d89a6]">
+                <span className="text-xs sm:text-[11px] uppercase tracking-widest font-normal text-[#8d89a6]">
                   {info.typeLabel}
                 </span>
 
@@ -34,11 +34,11 @@ export const ServicesTable: React.FC<ServicesTableProps> = ({ selectedIds, onTog
                   href={info.instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-[11px] font-normal text-[#8d89a6] hover:text-[#4c4664] transition-colors"
+                  className="inline-flex items-center gap-1 text-xs sm:text-[11px] font-normal text-[#8d89a6] hover:text-[#4c4664] transition-colors"
                   title={`Instagram de ${info.name}`}
                 >
                   <span>{info.instagramHandle}</span>
-                  <ExternalLink className="w-2.5 h-2.5 text-[#bfabcb]" />
+                  <ExternalLink className="w-3 h-3 sm:w-2.5 sm:h-2.5 text-[#bfabcb]" />
                 </a>
               </div>
 
@@ -47,15 +47,15 @@ export const ServicesTable: React.FC<ServicesTableProps> = ({ selectedIds, onTog
                   {info.name}
                 </h3>
                 {selectedCountInGroup > 0 ? (
-                  <span className="inline-flex items-center gap-1 text-[11px] font-normal text-[#4c4664] bg-[#e6c0e9]/50 px-2.5 py-0.5 rounded-full border border-[#bfabcb]/40">
+                  <span className="inline-flex items-center gap-1 text-xs sm:text-[11px] font-normal text-[#4c4664] bg-[#e6c0e9]/50 px-2.5 py-0.5 rounded-full border border-[#bfabcb]/40">
                     <span>{selectedCountInGroup} de {services.length}</span>
                   </span>
                 ) : (
-                  <span className="text-[11px] text-[#8d89a6] font-light">{services.length} opciones</span>
+                  <span className="text-xs sm:text-[11px] text-[#8d89a6] font-light">{services.length} opciones</span>
                 )}
               </div>
 
-              <p className="text-[11px] sm:text-xs text-[#8d89a6] font-light mt-0.5 truncate">
+              <p className="text-xs text-[#8d89a6] font-light mt-0.5">
                 {info.subtitle}
               </p>
             </div>
@@ -69,40 +69,39 @@ export const ServicesTable: React.FC<ServicesTableProps> = ({ selectedIds, onTog
                     type="button"
                     key={service.id}
                     onClick={() => onToggle(service.id)}
-                    className={`w-full text-left flex items-center justify-between px-3.5 py-2.5 cursor-pointer select-none transition-colors duration-150 gap-2.5 group ${
+                    className={`w-full text-left flex items-center justify-between px-4 sm:px-3.5 py-3 sm:py-2.5 cursor-pointer select-none transition-colors duration-150 gap-3 group ${
                       isChecked
                         ? 'bg-[#f2d5f8]/45 hover:bg-[#f2d5f8]/60'
-                        : 'hover:bg-[#fbf9fc]'
+                        : 'hover:bg-[#fbf9fc] active:bg-[#f2d5f8]/20'
                     }`}
                   >
-                    <div className="flex items-center gap-2.5 min-w-0 flex-1">
+                    <div className="flex items-center gap-3 min-w-0 flex-1">
                       {/* Checkbox in Lavender Grey / Lilac */}
                       <div
-                        className={`w-4 h-4 rounded flex items-center justify-center border transition-all shrink-0 ${
+                        className={`w-5 h-5 sm:w-4 sm:h-4 rounded-md sm:rounded flex items-center justify-center border transition-all shrink-0 ${
                           isChecked
                             ? 'bg-[#8d89a6] border-[#8d89a6] text-white'
                             : 'border-[#bfabcb] bg-white group-hover:border-[#8d89a6]'
                         }`}
                       >
-                        {isChecked && <Check className="w-3 h-3 stroke-[2.5]" />}
+                        {isChecked && <Check className="w-3.5 h-3.5 sm:w-3 sm:h-3 stroke-[2.5]" />}
                       </div>
 
                       <span
-                        className={`text-xs sm:text-[13px] leading-tight truncate transition-colors ${
+                        className={`text-[15px] sm:text-sm leading-snug transition-colors ${
                           isChecked
                             ? 'text-[#4c4664] font-medium'
-                            : 'text-[#4c4664]/85 font-normal group-hover:text-[#4c4664]'
+                            : 'text-[#4c4664]/90 font-normal group-hover:text-[#4c4664]'
                         }`}
-                        title={service.name}
                       >
                         {service.name}
                       </span>
                     </div>
 
-                    <div className="shrink-0 text-right">
+                    <div className="shrink-0 text-right pl-2">
                       <span
-                        className={`text-xs sm:text-[13px] tabular-nums transition-colors ${
-                          isChecked ? 'font-semibold text-[#4c4664]' : 'font-normal text-[#8d89a6]'
+                        className={`text-[15px] sm:text-sm tabular-nums transition-colors ${
+                          isChecked ? 'font-semibold text-[#4c4664]' : 'font-medium text-[#8d89a6]'
                         }`}
                       >
                         ${service.price.toLocaleString('es-AR')}

@@ -121,8 +121,8 @@ export default function App() {
             <div className="text-xs sm:text-sm text-[#8d89a6] font-light">
               {isDiscountApplied ? (
                 <span>
-                  Total con descuento: <strong className="text-base sm:text-lg text-[#4c4664] font-medium ml-1">${finalTotal.toLocaleString('es-AR')}</strong>
-                  <span className="ml-2 text-xs text-[#8d89a6]">(Ahorrás ${discountSavings.toLocaleString('es-AR')})</span>
+                  Total con 15% OFF: <strong className="text-base sm:text-lg text-[#4c4664] font-medium ml-1">${finalTotal.toLocaleString('es-AR')}</strong>
+                  <span className="ml-2 text-xs text-[#8d89a6]">(Ahorrás ${discountSavings.toLocaleString('es-AR')} · Efectivo/transf.)</span>
                 </span>
               ) : selectedServices.length === 2 ? (
                 <span className="text-[#8d89a6]">

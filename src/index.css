@@ -67,6 +67,66 @@
 .delay-300 { transition-delay: 300ms; }
 .delay-400 { transition-delay: 400ms; }
 
+/* Luxury Hero Entrance Animations on Page Load */
+@keyframes heroFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroAuraFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.hero-animate-badge {
+  animation: heroFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.hero-animate-title {
+  animation: heroFadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+}
+
+.hero-animate-subtitle {
+  animation: heroFadeInUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+.hero-animate-banner {
+  animation: heroFadeInUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+}
+
+.hero-animate-cta {
+  animation: heroFadeInUp 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.hero-animate-aura {
+  animation: heroAuraFade 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate-badge,
+  .hero-animate-title,
+  .hero-animate-subtitle,
+  .hero-animate-banner,
+  .hero-animate-cta,
+  .hero-animate-aura {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 /* Subtle card hover without image distraction */
 .card-glow-subtle {
   transition: box-shadow 0.3s ease, border-color 0.3s ease, transform 0.2s ease;

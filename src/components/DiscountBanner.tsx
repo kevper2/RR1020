@@ -27,7 +27,7 @@ export const DiscountBanner: React.FC<DiscountBannerProps> = ({
             )}
           </div>
           <span className="text-[11px] uppercase tracking-widest font-normal text-[#8d89a6]">
-            Beneficio Especial
+            Beneficio especial: mínimo 3 servicios y/o productos
           </span>
           <span className="text-xs text-[#bfabcb]">·</span>
           <span className="text-xs text-[#8d89a6] font-light">Día de la Madre</span>
@@ -41,7 +41,7 @@ export const DiscountBanner: React.FC<DiscountBannerProps> = ({
                 <span className="block sm:inline">activado en tu regalo!</span>
               </>
             ) : (
-              '15% de descuento a partir de 3 servicios'
+              '15% de descuento (mínimo 3 servicios y/o productos)'
             )}
           </h3>
 
@@ -55,7 +55,7 @@ export const DiscountBanner: React.FC<DiscountBannerProps> = ({
                 en el total.
               </span>
             ) : selectedCount === 0 ? (
-              'Marcá los servicios y productos que te gustaría incluir. Con 3 o más recibís 15% de descuento en el total.'
+              'Marcá los servicios y productos que te gustaría incluir. Con un mínimo de 3 servicios y/o productos recibís 15% de descuento en el total.'
             ) : (
               <span>
                 Llevás <strong className="text-[#4c4664] font-medium">{selectedCount} {selectedCount === 1 ? 'opción' : 'opciones'}</strong>.{' '}
@@ -83,6 +83,11 @@ export const DiscountBanner: React.FC<DiscountBannerProps> = ({
               />
             );
           })}
+        </div>
+
+        {/* Payment Condition Clarification */}
+        <div className="pt-1 text-[11px] sm:text-xs text-[#8d89a6] font-light">
+          <span>* La promoción es válida exclusivamente abonando en efectivo o transferencia.</span>
         </div>
       </div>
     </div>

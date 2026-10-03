@@ -87,6 +87,9 @@ export const CheckoutDrawer: React.FC<CheckoutDrawerProps> = ({
       msg += `Descuento especial 3+ opciones (15% OFF): -$${discountAmount.toLocaleString('es-AR')}\n`;
     }
     msg += `*TOTAL A PAGAR: $${finalTotal.toLocaleString('es-AR')}*\n`;
+    if (isDiscountEligible) {
+      msg += `(Promoción 15% OFF válida abonando en efectivo o transferencia)\n`;
+    }
     msg += `-------------------------\n\n`;
     msg += `¡Hola! Me gustaría confirmar la reserva de este regalo para mamá :). ¿Cómo procedemos con el pago y la entrega? Muchas gracias!`;
 
@@ -315,9 +318,14 @@ export const CheckoutDrawer: React.FC<CheckoutDrawerProps> = ({
               </span>
             </div>
 
-            <div className="pt-2 flex items-center gap-1.5 text-[11px] text-[#8d89a6]">
-              <Calendar className="w-3.5 h-3.5 text-[#bfabcb]" />
-              <span>Validez del regalo: 60 días desde la fecha de compra.</span>
+            <div className="pt-2 flex flex-col gap-1 text-[11px] text-[#8d89a6]">
+              <div className="flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5 text-[#bfabcb]" />
+                <span>Validez del regalo: 60 días desde la fecha de compra.</span>
+              </div>
+              <div className="text-[#8d89a6]">
+                * La promoción del 15% OFF es válida exclusivamente en efectivo o transferencia.
+              </div>
             </div>
           </div>
         </div>

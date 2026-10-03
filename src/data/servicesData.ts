@@ -19,7 +19,7 @@ export const BUSINESSES_INFO: Record<string, BusinessInfo> = {
   },
   ropa: {
     category: 'ropa',
-    name: 'Jazmín',
+    name: 'Jazmín Ropa Interior',
     typeLabel: 'Ropa interior',
     subtitle: 'Ropa interior y ropa deportiva cómoda para todos los días',
     instagramHandle: '@ropainteriorjazmin',
@@ -66,67 +66,73 @@ export const SERVICES_LIST: ServiceItem[] = [
     price: 45000,
   },
 
-  // 2. Manicuría: Yasmin Studio de Uñas (5 opciones actualizadas)
+  // 2. Manicuría: Yasmin Studio de Uñas (actualizadas)
   {
     id: 'man-1',
     name: 'Semi Perm',
     category: 'manicuria',
-    price: 28000,
+    price: 30000,
   },
   {
     id: 'man-2',
     name: 'Capping',
     category: 'manicuria',
-    price: 30000,
+    price: 32000,
   },
   {
     id: 'man-3',
     name: 'Soft Gel',
     category: 'manicuria',
-    price: 34000,
+    price: 36000,
   },
   {
     id: 'man-4',
     name: 'Poly Gel',
     category: 'manicuria',
-    price: 38000,
+    price: 40000,
   },
   {
     id: 'man-5',
-    name: 'French o 2 Diseños',
+    name: '2 Full Diseños',
     category: 'manicuria',
-    price: 16000,
+    price: 20000,
+  },
+  {
+    id: 'man-6',
+    name: 'French o 1 diseño medio',
+    category: 'manicuria',
+    price: 5000,
   },
 
-  // 3. Ropa: Jazmín (5 opciones actualizadas)
+  // 3. Ropa interior: Jazmín Ropa Interior (actualizadas)
   {
     id: 'rop-1',
-    name: 'Conjunto taza soft - Talles 85 al 100',
-    category: 'ropa',
-    price: 16000,
-  },
-  {
-    id: 'rop-2',
-    name: 'Camisolín',
+    name: 'Conjunto taza soft de algodón con less regulable. Talles 85 al 100',
     category: 'ropa',
     price: 21000,
   },
   {
-    id: 'rop-3',
-    name: 'Pack de less Frashe',
+    id: 'rop-2',
+    name: 'Corpiño segunda piel talle 105',
     category: 'ropa',
-    price: 10000,
+    price: 28900,
+  },
+  {
+    id: 'rop-3',
+    name: 'Camisolín + bata',
+    category: 'ropa',
+    price: 32000,
   },
   {
     id: 'rop-4',
-    name: 'Conjunto triángulo soft',
+    name: 'Pack de less frashe talle único',
     category: 'ropa',
-    price: 19000,
+    price: 15000,
   },
   {
     id: 'rop-5',
-    name: 'Calzas estampadas - Talles 1 al 6',
+    name: 'Calza larga',
     category: 'ropa',
-    price: 20000,
+    price: 23000,
   },
 ];
